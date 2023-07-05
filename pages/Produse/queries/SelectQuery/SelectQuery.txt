@@ -1,0 +1,6 @@
+SELECT p.id, p.name, p.description, p.price, p.unit, p.category_id, c.name category FROM public."products" as p
+join categories c on c.id=p.category_id
+WHERE p.name ilike '%{{data_table.searchText || ""}}%'
+ORDER BY "{{data_table.sortOrder.column || 'id'}}" {{data_table.sortOrder.order || 'ASC'}}
+LIMIT {{data_table.pageSize}}
+OFFSET {{(data_table.pageNo - 1) * data_table.pageSize}};

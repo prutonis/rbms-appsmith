@@ -1,0 +1,8 @@
+UPDATE public."products" SET
+		"name" = '{{update_form.fieldState.name.isVisible ? update_form.formData.name : update_form.sourceData.name}}',
+		"category_id" = '{{update_form.fieldState.category_id.isVisible ? update_form.formData.category_id : update_form.sourceData.category_id}}',
+    "price" = '{{update_form.fieldState.price.isVisible ? update_form.formData.price : update_form.sourceData.price}}',
+		"edt" = now(),
+		"unit" = '{{update_form.fieldState.unit1.isVisible ? update_form.formData.unit1 : update_form.sourceData.unit1}}',
+		"description" = '{{update_form.fieldState.description.isVisible ? update_form.formData.description : update_form.sourceData.description}}'
+WHERE "id" = {{data_table.selectedRow.id}};
